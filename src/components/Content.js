@@ -13,7 +13,7 @@ export class Content extends React.Component {
                 <Heading header="Summary" />
                 <Placeholder />
                 <Divider />
-                <Button text="Tap on Me" styles="ui button inverted"/>
+                <Button text="Tap on Me" styles="ui button"/>
             </Segment>
         );
     }

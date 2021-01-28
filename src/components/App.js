@@ -1,28 +1,50 @@
 import React from 'react';
 import { Content } from "./Content";
-import { Button } from "./Button";
+import { BasicButton } from "./BasicButton";
+import { ThemeContext } from "../contexts/ThemeContext";
 
 
 class App extends React.Component {
+    constructor(props) {
+        super(props);
 
-    state = { theme: 'light' };
+        this.toggleTheme = this.toggleTheme.bind(this);
+        this.state = { theme: 'inverted' };
+    }
+
+
+    toggleTheme() {
+        if(this.state.theme === 'light') {
+            this.setState({ theme: 'inverted' });
+        } else {
+            this.setState({ theme: 'light' });
+        }
+    }
+
 
     render() {
+
         return (
             <div className="ui container">
                 <div className="ui column grid">
-                    <div className="row">
-                        <div className="wide column">
-                            <div className="ui basic segment">
-                                <Button text="Toggle Theme" styles="ui secondary button right floated"/>
+                        <div className="row">
+                            <div className="wide column">
+                                <div className="ui basic segment">
+                                    <BasicButton
+                                        onClick={this.toggleTheme}
+                                        text="Toggle Theme"
+                                        styles="ui button right floated"
+                                        />
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="row">
-                        <div className="wide column">
-                            <Content />
+                        <div className="row">
+                            <div className="wide column">
+                                <ThemeContext.Provider value={this.state.theme}>
+                                    <Content />
+                                </ThemeContext.Provider>
+                            </div>
                         </div>
-                    </div>
                 </div>
             </div>
         );
