@@ -1,24 +1,32 @@
 import React from 'react';
-import { Button } from "./Button";
 import { Content } from "./Content";
-import { Divider } from "./Divider";
-import { Heading } from "./Heading";
-import { Placeholder } from "./Placeholder";
-import { Segment } from "./Segment";
+import { Button } from "./Button";
 
 
-export default class App extends React.Component {
+class App extends React.Component {
+
+    state = { theme: 'light' };
+
     render() {
         return (
-            <div>
-                App
-                <Button/>
-                <Content/>
-                <Divider/>
-                <Heading/>
-                <Placeholder/>
-                <Segment/>
+            <div className="ui container">
+                <div className="ui column grid">
+                    <div className="row">
+                        <div className="wide column">
+                            <div className="ui basic segment">
+                                <Button text="Toggle Theme" styles="ui secondary button right floated"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="wide column">
+                            <Content />
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
 };
+
+export default  App;
